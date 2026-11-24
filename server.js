@@ -4,10 +4,10 @@ const cors = require('cors');
 const path = require('path');
 const inventory = require('./db.js');
 const app = express();
-const PORT = 3000;
+const PORT = 8080;
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
 //auth routes
 //user reg
 app.post('/api/register', (req, res) => {
@@ -95,6 +95,14 @@ app.delete('/api/items/:id', (req, res) => {
   inventory.deleteItem(itemId);
   res.status(200).json({ success: true, message: 'item deleted' });
 });
-app.listen(PORT, () => {
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+const server = app.listen(PORT, () => {
   console.log(` Open Google Chrome and visit: http://localhost:${PORT}`);
 });
+server.on('error', (err) => {
+  console.error('Server error:', err);
+});
+
+

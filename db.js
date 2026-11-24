@@ -220,5 +220,5 @@ if (require.main === module) { seedInventory(); }
 
 //export
 module.exports = {
-    inventory, isInventory, seedInventory, encryptPassword, findUserName, createUser, userLogin, getAllItems, getItem, userItems, newItem, editItem, deleteItem
+    inventory, isInventory, seedInventory, encryptPassword, findUsername, createUser, userLogin, getAllItems, getItem, userItems, newItem, editItem, deleteItem
 };
