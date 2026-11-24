@@ -1,5 +1,242 @@
-/*main*/
+/*css styling*/
+body {
+    font-family: sans-serif;
+    line-height: 1.4;
+    margin: 1rem;
+    background-color: #121212;
+    color: #077588;
+}
 
-/*cards*/
+header {
+    margin-bottom: 1rem;
+    text-align: center;
+}
 
-/*no*/
+nav {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+main {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+footer {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5rem;
+}
+
+.app-footer {
+    max-width: 700px;
+    margin: 3rem auto 1rem;
+    text-align: center;
+}
+
+.home {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.home-text {
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.user-nav-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.nav-btn.active {
+    font-weight: bold;
+}
+
+/* Forms & Cards */
+.user-login {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.user-register {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.create-item {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    max-width: 320px;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.detail-item-view {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    max-width: 320px;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.item-card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    max-width: 320px;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.edit-page {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    max-width: 320px;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 280px);
+    gap: 1rem;
+    justify-content: center;
+}
+
+.item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submit-cancel {
+    display: inline-flex;
+    gap: 1rem;
+    margin: 0.5rem 0;
+}
+
+.edit-btn {
+    display: inline-flex;
+    gap: 1rem;
+    margin: 0.5rem 0;
+}
+
+.delete {
+    display: inline-flex;
+    gap: 1rem;
+    margin: 0.5rem 0;
+}
+
+.save-changes {
+    display: inline-flex;
+    gap: 1rem;
+    margin: 0.5rem 0;
+}
+
+.input-field {
+    margin-bottom: 0.75rem;
+}
+
+.input-field label {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.input-field input .input-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.4rem;
+}
+
+button {
+    background-color: #2a2a2a;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+.btn {
+    background-color: #2a2a2a;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+.logout {
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+}
+
+.to-login {
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+}
+
+.to-register {
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+}
+
+.register {
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+}
+
+.back-to-nav {
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.badge {
+    border: 1px solid #999;
+    padding: 0.1rem 0.3rem;
+    font-size: 0.85rem;
+}
+
+.item-counter {
+    border: 1px solid #999;
+    padding: 0.1rem 0.3rem;
+    font-size: 0.85rem;
+}
+
+.owner-tag {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    border: 1px dashed #ccc;
+}
