@@ -12,7 +12,7 @@
 
 The database modelts a **one to many** relationship, 1 user to many items
 
-### 1. users
+### 1. Users
 | Column       | Type         | Description                          |
 
 | `id`         | INTEGER (PK) | Unique user ID                       |<br>
@@ -20,7 +20,7 @@ The database modelts a **one to many** relationship, 1 user to many items
 | `last_name`  | TEXT         | Last name of the inventory manager   |<br>
 | `password`   | TEXT         | SHA-256 encrypted password           |<br>
 
-### 2. items
+### 2. Items
 | Column          | Type         | Description                    |
 
 | `id`            | INTEGER (PK) | Unique item ID                 |<br>
@@ -48,16 +48,17 @@ The database modelts a **one to many** relationship, 1 user to many items
    http://localhost:8080
    ```
    **NOTE**: if you are having issues with the app not working go into server.js on line 7 change the port number, I had issues with the app not starting because the port was busy
+
    **Note:** If you skip step 3, that's okay! The server will automatically seed the database on its first start if it detects an empty database. The `seed` command is there if you ever want to reset the data back to the original demo state.
    ---
 
-   ## Pre-seeded demo accounts and items
+## Pre-seeded demo accounts and items
 
 The seed script initializes three demo manager accounts:
 
 | Name | Username | Password | Pre-seeded Items Owned |
 | :--- | :--- | :--- | :--- |
-| **Alexandre Johnsonson** | `alexj` | `password123` | • Ergonomic Desk Chair (Qty: 12)<br>• Gaming Monitor (Qty: 5)• Wireless Mechanical Keyboard (Qty: 20) |<br>
+| **Alexandre Johnsonson** | `alexj` | `password123` | • Ergonomic Desk Chair (Qty: 12)<br>• Gaming Monitor (Qty: 5)<br>• Wireless Mechanical Keyboard (Qty: 20) |<br>
 | **Saphira Connors** | `sconnor` | `password123` | • Noise-Cancelling Headphones (Qty: 8)<br>• Dual Monitor Arm Stand (Qty: 14) |
 | **David Kimov** | `dkim` | `password123` | • USB-C Multiport Hub (Qty: 25)<br>• Adjustable Standing Desk Converter (Qty: 6) |
 
