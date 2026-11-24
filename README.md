@@ -14,19 +14,19 @@ The database modelts a **one to many** relationship, 1 user to many items
 
 ### 1. Users
 | Column       | Type         | Description                          |
-| :--- | :--- | :--- | :--- |
-| `id`         | INTEGER (PK) | Unique user ID                       |<br>
-| `first_name` | TEXT         | First name of the inventory manager  |<br>
-| `last_name`  | TEXT         | Last name of the inventory manager   |<br>
-| `password`   | TEXT         | SHA-256 encrypted password           |<br>
+| :--- | :--- | :--- |
+| `id`         | INTEGER (PK) | Unique user ID                       |
+| `first_name` | TEXT         | First name of the inventory manager  |
+| `last_name`  | TEXT         | Last name of the inventory manager   |
+| `password`   | TEXT         | SHA-256 encrypted password           |
 
 ### 2. Items
 | Column          | Type         | Description                    |
-| :--- | :--- | :--- | :--- |
-| `id`            | INTEGER (PK) | Unique item ID                 |<br>
-| `user_id`       | INTEGER (FK) | References `users(id)`         |<br>
-| `item_name`     | TEXT         | Name of the inventory item     |<br>
-| `description`   | TEXT         | Full description of the item   |<br>
+| :--- | :--- | :--- |
+| `id`            | INTEGER (PK) | Unique item ID                 |
+| `user_id`       | INTEGER (FK) | References `users(id)`         |
+| `item_name`     | TEXT         | Name of the inventory item     |
+| `description`   | TEXT         | Full description of the item   |
 | `quantity`      | INTEGER      | Available item quantity        |
 
 ---
