@@ -13,21 +13,22 @@
 The database modelts a **one to many** relationship, 1 user to many items
 
 ### 1. Users
-| Column       | Type         | Description                          |
+| Column | Type | Description |
 | :--- | :--- | :--- |
-| `id`         | INTEGER (PK) | Unique user ID                       |
-| `first_name` | TEXT         | First name of the inventory manager  |
-| `last_name`  | TEXT         | Last name of the inventory manager   |
-| `password`   | TEXT         | SHA-256 encrypted password           |
+| `id` | INTEGER (PK) | Unique user ID |
+| `first_name` | TEXT | First name of the inventory manager |
+| `last_name` | TEXT | Last name of the inventory manager |
+| `username` | TEXT (UNIQUE) | Unique login username |
+| `password` | TEXT | SHA-256 encrypted password |
 
 ### 2. Items
-| Column          | Type         | Description                    |
+| Column | Type | Description |
 | :--- | :--- | :--- |
-| `id`            | INTEGER (PK) | Unique item ID                 |
-| `user_id`       | INTEGER (FK) | References `users(id)`         |
-| `item_name`     | TEXT         | Name of the inventory item     |
-| `description`   | TEXT         | Full description of the item   |
-| `quantity`      | INTEGER      | Available item quantity        |
+| `id` | INTEGER (PK) | Unique item ID |
+| `user_id` | INTEGER (FK) | References `users(id)` |
+| `item_name` | TEXT | Name of the inventory item |
+| `description` | TEXT | Full description of the item |
+| `quantity` | INTEGER | Available item quantity |
 
 ---
 
@@ -58,7 +59,7 @@ The seed script initializes three demo manager accounts:
 
 | Name | Username | Password | Pre-seeded Items Owned |
 | :--- | :--- | :--- | :--- |
-| **Alexandre Johnsonson** | `alexj` | `password123` | • Ergonomic Desk Chair (Qty: 12)<br>• Gaming Monitor (Qty: 5)<br>• Wireless Mechanical Keyboard (Qty: 20) |<br>
+| **Alexandre Johnsonson** | `alexj` | `password123` | • Ergonomic Desk Chair (Qty: 12)<br>• Gaming Monitor (Qty: 5)<br>• Wireless Mechanical Keyboard (Qty: 20) |
 | **Saphira Connors** | `sconnor` | `password123` | • Noise-Cancelling Headphones (Qty: 8)<br>• Dual Monitor Arm Stand (Qty: 14) |
 | **David Kimov** | `dkim` | `password123` | • USB-C Multiport Hub (Qty: 25)<br>• Adjustable Standing Desk Converter (Qty: 6) |
 
