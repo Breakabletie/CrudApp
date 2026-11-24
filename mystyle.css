@@ -4,7 +4,7 @@ body {
     line-height: 1.4;
     margin: 1rem;
     background-color: #121212;
-    color: #077588;
+    color: #2248f5;
 }
 
 header {
@@ -81,20 +81,14 @@ footer {
     box-sizing: border-box;
 }
 
-.create-item {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    max-width: 320px;
-    margin-bottom: 1rem;
-    align-items: center;
-}
-
+.create-item,
 .detail-item-view {
-    border: 1px solid #ccc;
+    border: none;
     padding: 1rem;
-    max-width: 320px;
-    margin-bottom: 1rem;
-    align-items: center;
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto 1rem;
+    box-sizing: border-box;
 }
 
 .item-card {
@@ -105,17 +99,32 @@ footer {
     align-items: center;
 }
 
+.item-title,
+.item-counter h1 {
+    text-align: center;
+    color: #2248f5;
+}
+
+.item-desc.full-description {
+    text-align: left;
+    color: #99abff;
+}
+
+.full-description {
+    text-align: left;
+    color: #99abff;
+}
+
 .edit-page {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    max-width: 320px;
-    margin-bottom: 1rem;
-    align-items: center;
+    border: none;
+    padding: 0.5rem 0;
+    text-align: center;
+    margin: 0 auto 1.5rem;
 }
 
 .item-grid {
     display: grid;
-    grid-template-columns: repeat(3, 280px);
+    grid-template-columns: repeat(3, 360px);
     gap: 1rem;
     justify-content: center;
 }
@@ -130,7 +139,13 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1112px;
+    margin: 0 auto 1.5rem;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 0 0.5rem;
 }
+
 
 .details {
     display: flex;
@@ -171,10 +186,12 @@ footer {
     margin-bottom: 0.25rem;
 }
 
-.input-field input .input-field textarea {
+.input-field input,
+.input-field textarea {
     width: 100%;
     box-sizing: border-box;
-    padding: 0.4rem;
+    padding: 0.6rem;
+    font-size: 1rem;
 }
 
 button {
@@ -183,10 +200,20 @@ button {
     border: 1px solid #444;
 }
 
+button:hover {
+    background-color: #3f3f3f;
+    border-color: #666;
+}
+
 .btn {
     background-color: #2a2a2a;
     color: #fff;
     border: 1px solid #444;
+}
+
+.btn:hover {
+    background-color: #3f3f3f;
+    border-color: #666;
 }
 
 .logout {
@@ -219,20 +246,19 @@ button {
 }
 
 .badge {
-    border: 1px solid #999;
-    padding: 0.1rem 0.3rem;
+    border: none;
     font-size: 0.85rem;
+    font-weight: bold;
 }
 
 .item-counter {
-    border: 1px solid #999;
-    padding: 0.1rem 0.3rem;
+    border: none;
     font-size: 0.85rem;
 }
 
 .owner-tag {
     font-size: 0.85rem;
-    color: #666;
+    color: #acacac;
 }
 
 .empty-state {
