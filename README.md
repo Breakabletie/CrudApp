@@ -40,11 +40,15 @@ The database modelts a **one to many** relationship, 1 user to many items
    ```
    node db.js
    ```
-4. Start the server(make sure npm is installed 'npm install'):
+4. Install npm to get all required dependencies
+   ```
+   npm install
+   ```
+5. Start the server:
    ```
    node server.js
    ```
-5. Open **Google Chrome** and visit:
+6. Open **Google Chrome** and visit:
    ```
    http://localhost:8080
    ```
