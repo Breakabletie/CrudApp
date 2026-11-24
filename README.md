@@ -14,7 +14,7 @@ The database modelts a **one to many** relationship, 1 user to many items
 
 ### 1. Users
 | Column       | Type         | Description                          |
-
+| :--- | :--- | :--- | :--- |
 | `id`         | INTEGER (PK) | Unique user ID                       |<br>
 | `first_name` | TEXT         | First name of the inventory manager  |<br>
 | `last_name`  | TEXT         | Last name of the inventory manager   |<br>
@@ -22,7 +22,7 @@ The database modelts a **one to many** relationship, 1 user to many items
 
 ### 2. Items
 | Column          | Type         | Description                    |
-
+| :--- | :--- | :--- | :--- |
 | `id`            | INTEGER (PK) | Unique item ID                 |<br>
 | `user_id`       | INTEGER (FK) | References `users(id)`         |<br>
 | `item_name`     | TEXT         | Name of the inventory item     |<br>
