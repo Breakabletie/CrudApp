@@ -57,7 +57,7 @@ The seed script initializes three demo manager accounts:
 
 | Name | Username | Password | Pre-seeded Items Owned |
 | :--- | :--- | :--- | :--- |
-| **Alexandre Johnsonson** | `alexj` | `password123` | • Ergonomic Desk Chair (Qty: 12)• Gaming Monitor (Qty: 5)• Wireless Mechanical Keyboard (Qty: 20) |<br>
+| **Alexandre Johnsonson** | `alexj` | `password123` | • Ergonomic Desk Chair (Qty: 12)<br>• Gaming Monitor (Qty: 5)• Wireless Mechanical Keyboard (Qty: 20) |<br>
 | **Saphira Connors** | `sconnor` | `password123` | • Noise-Cancelling Headphones (Qty: 8)<br>• Dual Monitor Arm Stand (Qty: 14) |
 | **David Kimov** | `dkim` | `password123` | • USB-C Multiport Hub (Qty: 25)<br>• Adjustable Standing Desk Converter (Qty: 6) |
 
