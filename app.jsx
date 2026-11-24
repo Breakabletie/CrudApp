@@ -155,7 +155,7 @@ function ItemDetail({ itemId, currentUser, onBack, onDeleted }) {
                     userId: currentUser.id,
                     itemName: editName,
                     quantity: parseInt(editQuantity, 10),
-                    description: editDescription
+                    desc: editDescription
                 })
             });
             if (!res.ok) return;
@@ -283,7 +283,7 @@ function CreateItemForm({ currentUser, onCreated, onCancel }) {
                     userId: currentUser.id,
                     itemName,
                     quantity: parseInt(quantity, 10),
-                    description
+                    desc: description
                 })
             });
             if (!res.ok) return;
@@ -346,9 +346,11 @@ function CreateItemForm({ currentUser, onCreated, onCancel }) {
 function LoginForm({ onLoginSuccess, onGoRegister }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrorMsg('');
         try {
             const res = await fetch(`${API_BASE}/login`, {
                 method: 'POST',
@@ -357,11 +359,15 @@ function LoginForm({ onLoginSuccess, onGoRegister }) {
             });
 
             const result = await res.json();
-            if (!res.ok) return;
+            if (!res.ok) {
+                setErrorMsg(result.error || 'Login failed. Please check your username and password.');
+                return;
+            }
 
             onLoginSuccess(result.user);
         } catch (err) {
             console.error(err);
+            setErrorMsg('Unable to connect to the server. Please try again later.');
         }
     };
 
@@ -370,6 +376,12 @@ function LoginForm({ onLoginSuccess, onGoRegister }) {
             <div className="user-login">
                 <h2>Manager Login</h2>
                 <p className="subtitle">Log into your account to manage your inventory.</p>
+
+                {errorMsg && (
+                    <div className="alert-error">
+                        {errorMsg}
+                    </div>
+                )}
 
                 <form onSubmit={handleSubmit}>
                     <div className="input-field">
@@ -412,19 +424,31 @@ function RegisterForm({ onRegisterSuccess, onGoLogin }) {
     const [lastName, setLastName] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrorMsg('');
         try {
             const res = await fetch(`${API_BASE}/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ firstName, lastName, username, password })
+                body: JSON.stringify({
+                    first_name: firstName,
+                    last_name: lastName,
+                    username,
+                    password
+                })
             });
             const result = await res.json();
-            if (!res.ok) return;
+            if (!res.ok) {
+                setErrorMsg(result.error || 'Registration failed. Please try a different username.');
+                return;
+            }
             onRegisterSuccess(result.user);
         } catch (err) {
             console.error(err);
+            setErrorMsg('Unable to connect to the server. Please try again later.');
         }
     };
     return (
@@ -432,6 +456,13 @@ function RegisterForm({ onRegisterSuccess, onGoLogin }) {
             <div className="user-register">
                 <h2>Create an Account</h2>
                 <p className="subtitle">Join as an inventory manager to start tracking items.</p>
+
+                {errorMsg && (
+                    <div className="alert-error">
+                        {errorMsg}
+                    </div>
+                )}
+
                 <form onSubmit={handleSubmit}>
                     <div className="input-field">
                         <label>First Name</label>
@@ -473,7 +504,7 @@ function RegisterForm({ onRegisterSuccess, onGoLogin }) {
                             required
                         />
                     </div>
-                    <button type="register-account" className="btn btn-primary btn-block">
+                    <button type="submit" className="btn btn-primary btn-block">
                         Register Account
                     </button>
                 </form>

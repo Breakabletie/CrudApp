@@ -61,7 +61,7 @@ app.get('/api/my-items', (req, res) => {
 //create item
 app.post('/api/items', (req, res) => {
   const { userId, itemName, desc, quantity } = req.body;
-  if (!userId || !itemName || !desc || !quantity) {
+  if (!userId || !itemName || !desc || quantity === undefined || quantity === null || quantity === '') {  //a valid item can be created with no stock
     return res.status(400).json({ error: 'provide all item fields' });
   }
   const newItem = inventory.newItem(userId, itemName, desc, quantity);

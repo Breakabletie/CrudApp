@@ -81,7 +81,15 @@ footer {
     box-sizing: border-box;
 }
 
-.create-item,
+.create-item.detail-item-view {
+    border: none;
+    padding: 1rem;
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto 1rem;
+    box-sizing: border-box;
+}
+
 .detail-item-view {
     border: none;
     padding: 1rem;
@@ -99,7 +107,11 @@ footer {
     align-items: center;
 }
 
-.item-title,
+.item-title.item-counter h1 {
+    text-align: center;
+    color: #2248f5;
+}
+
 .item-counter h1 {
     text-align: center;
     color: #2248f5;
@@ -186,7 +198,13 @@ footer {
     margin-bottom: 0.25rem;
 }
 
-.input-field input,
+.input-field input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.6rem;
+    font-size: 1rem;
+}
+
 .input-field textarea {
     width: 100%;
     box-sizing: border-box;
@@ -265,4 +283,15 @@ button:hover {
     text-align: center;
     padding: 2rem;
     border: 1px dashed #ccc;
+}
+
+.alert-error {
+    background-color: #3b1114;
+    color: #ff8088;
+    border: 1px solid #7a2228;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
 }
