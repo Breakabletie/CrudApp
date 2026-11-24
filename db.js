@@ -2,12 +2,13 @@
 const path = require('path');
 const crypto = require('crypto');
 const { DatabaseSync } = require('node:sqlite');
-const inventorypath = path.join(__dirname, 'inventory.db');
+const fs = require('fs');
+const inventoryPath = path.join(__dirname, 'inventory.db');
 const inventoryExists = fs.existsSync(inventoryPath);
-const inventory = new databaseSync(inventorypath);
+const inventory = new DatabaseSync(inventoryPath);
 //create inventory
 function initTables() {
-    db.exec(`
+    inventory.exec(`
     CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       first_name TEXT NOT NULL,
@@ -40,14 +41,14 @@ function seedInventory() {
     INSERT INTO users (first_name, last_name, username, password)
     VALUES (?, ?, ?, ?)
     `);
-    const insertItem = db.prepare(`
+    const insertItem = inventory.prepare(`
     INSERT INTO items (user_id, item_name, description, quantity)
     VALUES (?, ?, ?, ?)
     `);
     //default password
-    const defaultpassword = encryptPassword('password123');
+    const defaultPassword = encryptPassword('password123');
     //user 1
-    const res1 = insertUser.run('Alex', 'Johnson', 'alexj', defaultPasswordHash);
+    const res1 = insertUser.run('Alexandre', 'Johnsonson', 'alexj', defaultPassword);
     const alexId = Number(res1.lastInsertRowid);
     insertItem.run(
         alexId,
@@ -57,38 +58,38 @@ function seedInventory() {
     );
     insertItem.run(
         alexId,
-        'Ultra-Wide Curved Gaming Monitor',
-        'A 34-inch ultra-wide curved monitor with 144Hz refresh rate, vibrant IPS color display, and built-in stereo speakers that make working and gaming an absolute pleasure.',
+        'Gaming Monitor',
+        'A 34-inch 144Hz refresh rate, vibrant IPS color display, and built-in suitable for gaming.',
         5
     );
     insertItem.run(
         alexId,
         'Wireless Mechanical Keyboard',
-        'Custom tactile mechanical switches with RGB backlighting, Bluetooth 5.0, and hot-swap keys.',
+        'Custom tactile mechanical switches with RGB backlighting.',
         20
     );
     //user 2
-    const res2 = insertUser.run('Sarah', 'Connor', 'sconnor', defaultPasswordHash);
+    const res2 = insertUser.run('Saphira', 'Connors', 'sconnor', defaultPassword);
     const sarahId = Number(res2.lastInsertRowid);
     insertItem.run(
         sarahId,
         'Noise-Cancelling Headphones',
-        'Over-ear wireless headphones with active noise cancellation, 30-hour battery life, and high-fidelity audio drivers for deep concentration.',
+        'Wireless headphones with active noise cancellation, 30 hour battery life, and surround sound.',
         8
     );
     insertItem.run(
         sarahId,
         'Dual Monitor Arm Stand',
-        'Heavy-duty aluminum gas spring dual monitor desk mount with cable management channels that support screens up to 32 inches.',
+        'Aluminum spring dual monitor desk mount with cable management channels that support screens up to 32 inches.',
         14
     );
     //user3
-    const res3 = insertUser.run('David', 'Kim', 'dkim', defaultPasswordHash);
+    const res3 = insertUser.run('David', 'Kimov', 'dkim', defaultPassword);
     const davidId = Number(res3.lastInsertRowid);
     insertItem.run(
         davidId,
         'USB-C Multiport Hub',
-        '7-in-1 compact USB-C adapter featuring 4K HDMI video output, 100W Power Delivery charging, SD/microSD card reader, and three USB 3.0 ports.',
+        'Compact USB-C adapter featuring 4K video output, 100W Power Delivery charging, SD/microSD card reader, and three USB 3.0 ports.',
         25
     );
     insertItem.run(
@@ -100,16 +101,15 @@ function seedInventory() {
     console.log('Seeding complete, inventory is ready with 3 users and 7 items.');
 }
 //seed if no database
-function isInventroy() {
+function isInventory() {
     if (!inventoryExists) {
-        initTables();
-        seedDatabase();
+        seedInventory();
     }
 }
-ensureDatabaseExists();
+isInventory();
 //database funcs
 //does username exist
-function findUserName(username) {
+function findUsername(username) {
     return inventory.prepare('SELECT * FROM users WHERE LOWER(username) = LOWER(?)')
         .get(username.trim());
 }
@@ -157,7 +157,7 @@ function getAllItems() {
     return inventory.prepare(search).all();
 }
 //get 1 item
-function getItem(itemID) {
+function getItem(itemId) {
     const search = `
         SELECT
             items.id,
@@ -172,7 +172,7 @@ function getItem(itemID) {
         JOIN users ON items.user_id = users.id
         WHERE items.id = ?
     `;
-    return db.prepare(search).get(itemId);
+    return inventory.prepare(search).get(itemId);
 }
 //get user items
 function userItems(userId) {
@@ -191,7 +191,7 @@ function userItems(userId) {
         WHERE items.user_id = ?
         ORDER BY items.id DESC
     `;
-    return db.prepare(search).all(userId);
+    return inventory.prepare(search).all(userId);
 }
 //create item
 function newItem(userId, itemName, desc, quantity) {
@@ -203,7 +203,7 @@ function newItem(userId, itemName, desc, quantity) {
     return Number(result.lastInsertRowid);
 }
 //edit item
-function editItem(itemId) {
+function editItem(itemId, itemName, description, quantity) {
     const edit = inventory.prepare(`
         UPDATE items
         SET item_name = ?, description = ?, quantity = ?
@@ -216,9 +216,9 @@ function deleteItem(itemId) {
     inventory.prepare('DELETE FROM items WHERE id = ?').run(itemId);
 }
 //seed from terminal
-if (require.main === module) { seedDatabase(); }
+if (require.main === module) { seedInventory(); }
 
 //export
 module.exports = {
-    inventory, isInventroy, seedInventory, encryptPassword, findUserName, createUser, userLogin, getAllItems, getItem, userItems, newItem, editItem, deleteItem
+    inventory, isInventory, seedInventory, encryptPassword, findUserName, createUser, userLogin, getAllItems, getItem, userItems, newItem, editItem, deleteItem
 };
